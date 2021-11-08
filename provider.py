@@ -29,7 +29,7 @@ def create_folder(folder_name):
 
 
 async def main():
-    package = await vm.repo(
+    payload = await vm.repo(
         image_hash="c0317d4db8930afde1862f27973ee2f5b766c4d50a87409406e2e23f",
         min_mem_gib=2,
         min_storage_gib=2.5,
@@ -94,9 +94,8 @@ async def main():
             f"Beginning Training Round {global_round_number}"
         )
         async with Executor(
-            package=package,
+            payload=payload,
             max_workers=NUM_PROVIDERS,
-            budget=20.0,
             timeout=timedelta(minutes=29),
             subnet_tag=SUBNET_TAG,
             event_consumer=log_summary(log_event_repr),
