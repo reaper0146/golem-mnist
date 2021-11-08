@@ -96,6 +96,7 @@ async def main():
         async with Executor(
             payload=payload,
             max_workers=NUM_PROVIDERS,
+            budget=1.0,
             timeout=timedelta(minutes=29),
             subnet_tag=SUBNET_TAG,
             event_consumer=log_summary(log_event_repr),
