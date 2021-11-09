@@ -16,7 +16,7 @@ NUM_PROVIDERS = 3  # More means slower per node, faster overall
 PROVIDER_EPOCHS = 5  # More means slower, but better convergence of the model
 BATCH_SIZE = 64  # More means faster convergence, but may lose out on accuracy
 
-SUBNET_TAG = 'community.3'  # (anshuman73/community.3)
+SUBNET_TAG = 'community.3'  # (devnet-beta.2/community.3)
 
 WORKER_MODEL_WEIGHTS_FOLDER = 'output/worker_models'
 WORKER_LOGS_FOLDER = 'output/logs'
@@ -30,7 +30,7 @@ def create_folder(folder_name):
 
 async def main():
     package = await vm.repo(
-        image_hash="c0317d4db8930afde1862f27973ee2f5b766c4d50a87409406e2e23f",
+        image_hash="8e2272db0cf83fbbf4f54c55d473c5208911445f5444b0c42ee10a39",
         min_mem_gib=2,
         min_storage_gib=2.5,
     )
