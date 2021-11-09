@@ -123,11 +123,11 @@ async def main():
         model.set_weights(averaged_weights)
 
         print(
-            f"TRAINING ROUND {global_round_number} complete!"
+            f"Training round {global_round_number} complete!"
             )
         eval_results = model.evaluate(testing_dataset)
         print(
-            f"ROUND {global_round_number} | Loss: {eval_results[0]} | Accuracy: {eval_results[1]}"
+            f"Round {global_round_number} | Loss: {eval_results[0]} | Accuracy: {eval_results[1]}"
         )
         print(
             f"Saving Model Weights for round {global_round_number}"
@@ -135,8 +135,8 @@ async def main():
         model.save(os.path.join(ROUND_WEIGHTS_FOLDER,
                                 f'round_{global_round_number}.h5'))
     print(
-        f"TRAINING COMPLETE! FIND YOUR FINAL MODEL BY THE NAME OF"
-        f" 'round_{global_round_number}.h5' IN THE OUTPUT FILES"
+        f"Training Done! Model name"
+        f" 'round_{global_round_number}.h5' in output file"
     )
 
 
@@ -155,14 +155,14 @@ if __name__ == "__main__":
         loop.run_until_complete(task)
     except KeyboardInterrupt:
         print(
-            "Shutting down gracefully, please wait a short while "
-            "or press Ctrl+C to exit immediately..."
+            "Shutting down, please wait a while "
+            "or press Ctrl+C to exit immediately!"
         )
         task.cancel()
         try:
             loop.run_until_complete(task)
             print(
-                "Shutdown completed, thank you for waiting!"
+                "Shutdown completed, thank you!"
             )
         except KeyboardInterrupt:
             pass

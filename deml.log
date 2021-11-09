@@ -1,0 +1,36 @@
+[2021-11-09T10:49:16.002-0500 DEBUG yapapi] Yapapi version: 0.6.2, script: provider.py, working directory: /home/sensorweb/MS/golem-mnist
+[2021-11-09T10:49:16.002-0500 INFO yapapi] Using log file `deml.log`; in case of errors look for additional information there
+[2021-11-09T10:49:16.005-0500 WARNING yapapi.payload.vm] Problem resolving _girepo._tcp.dev.golem.network, falling back to http://yacn2.dev.golem.network:8000, exception: [Errno 97] Address family not supported by protocol
+[2021-11-09T10:49:18.731-0500 DEBUG yapapi.executor] Creating Executor instance; parameters: {'_engine': None, 'payload': None, 'package': _VmPackage(repo_url='http://yacn2.dev.golem.network:8000', image_hash='8e2272db0cf83fbbf4f54c55d473c5208911445f5444b0c42ee10a39', constraints=_VmConstraints(min_mem_gib=2, min_storage_gib=2.5, min_cpu_threads=1, runtime='vm')), 'timeout': datetime.timedelta(0, 1740), 'max_workers': 3, 'stream_output': False, 'event_consumer': <bound method SummaryLogger.log of <yapapi.log.SummaryLogger object at 0x7f31ceda3668>>, 'network': None, 'driver': None, 'subnet_tag': 'devnet-beta.2', 'strategy': None, 'budget': 20.0, 'self': <yapapi.executor.Executor object at 0x7f31ceda3908>}
+[2021-11-09T10:49:18.732-0500 WARNING yapapi.executor] `package` argument to `yapapi.executor.Executor` is deprecated, please use `payload` instead
+[2021-11-09T10:49:18.756-0500 DEBUG yapapi.executor] Creating allocation using payment platform `zksync-rinkeby-tglm`
+[2021-11-09T10:49:19.610-0500 DEBUG yapapi.events] ShutdownFinished(exc_info=(<class 'ya_payment.exceptions.ApiException'>, ApiException(), <traceback object at 0x7f31cc00a548>))
+Traceback (most recent call last):
+  File "/home/sensorweb/.local/lib/python3.6/site-packages/yapapi/engine.py", line 245, in __aenter__
+    self.payment_decorator = _Engine.PaymentDecorator(await self._create_allocations())
+  File "/home/sensorweb/.local/lib/python3.6/site-packages/yapapi/engine.py", line 343, in _create_allocations
+    payment_address=account.address,
+  File "/home/sensorweb/.local/lib/python3.6/site-packages/async_exit_stack/_async_exit_stack.py", line 115, in enter_async_context
+    result = await _cm_type.__aenter__(cm)
+  File "/home/sensorweb/.local/lib/python3.6/site-packages/yapapi/rest/payment.py", line 93, in __aenter__
+    new_allocation: yap.Allocation = await self._api.create_allocation(self.model)
+  File "/home/sensorweb/.local/lib/python3.6/site-packages/ya_payment/api_client.py", line 206, in __call_api
+    raise e
+  File "/home/sensorweb/.local/lib/python3.6/site-packages/ya_payment/api_client.py", line 202, in __call_api
+    _request_timeout=_request_timeout,
+  File "/home/sensorweb/.local/lib/python3.6/site-packages/ya_payment/rest.py", line 276, in POST
+    body=body,
+  File "/home/sensorweb/.local/lib/python3.6/site-packages/ya_payment/rest.py", line 180, in request
+    raise ApiException(http_resp=r)
+ya_payment.exceptions.ApiException: (400)
+Reason: Bad Request
+HTTP response headers: <CIMultiDictProxy('Content-Length': '51', 'Content-Type': 'application/json', 'Date': 'Tue, 09 Nov 2021 15:49:19 GMT')>
+HTTP response body: {"message":"Insufficient funds to make allocation"}
+
+[2021-11-09T10:49:19.614-0500 INFO yapapi.summary] Total cost: 0
+[2021-11-09T10:49:19.614-0500 ERROR yapapi.summary] Error when shutting down Executor: (400)
+Reason: Bad Request
+HTTP response headers: <CIMultiDictProxy('Content-Length': '51', 'Content-Type': 'application/json', 'Date': 'Tue, 09 Nov 2021 15:49:19 GMT')>
+HTTP response body: {"message":"Insufficient funds to make allocation"}
+
+[2021-11-09T10:49:19.614-0500 DEBUG yapapi.utils] AsyncWrapper's worker task cancelled
